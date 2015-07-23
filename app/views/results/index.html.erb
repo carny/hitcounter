@@ -1,0 +1,47 @@
+<style type="text/css">
+.table-cell {
+  padding: 0 15px;
+  overflow: hidden;
+  display: table;
+  float: left;
+  min-height: 1px;
+}
+
+.table-row {
+  clear: both;
+}
+
+.domain, .path {
+  width: 200px;
+}
+
+.count {
+  width: 50px;
+}
+</style>
+
+<h1>
+  Results
+</h1>
+
+<div style='width:75%;' class='div-table'>
+  <div class='table-header'>
+    <div class='table-cell domain'><h3>Domain</h3></div>
+    <div class='table-cell path'><h3>Path</h3></div>
+    <div class='table-cell count'><h3>Hits</h3></div>
+  </div>
+
+  <%- @urls.each do |url| %>
+    <div class='table-row'>
+      <div class='table-cell domain'>
+        <%= url.host %>
+      </div>
+      <div class='table-cell path'>
+        <%= url.path %>
+      </div>
+      <div class='table-cell count'>
+        <%= url.hits %>
+      </div>
+    </div>
+  <%- end %>
+</div>

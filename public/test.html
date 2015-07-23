@@ -1,3 +1,24 @@
 <html>
-<img src="http://lvh.me:3000/"></img>
+  <head>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script type="text/javascript">
+      (function() {
+        $.ajax({
+          url: "http://hit-counter-1434996238.us-west-2.elb.amazonaws.com/",
+          success: function(result) {
+            $("#count").html(result["hits"]);
+          }
+        });
+      })();
+    </script>
+
+    <noscript>
+      <img height="1" width="1" alt="" style="display:none" src="http://hit-counter-1434996238.us-west-2.elb.amazonaws.com/"></img>
+    </noscript>
+    <title>Hit Counter Test Page</title>
+  </head>
+  <body>
+    <img src="http://placekitten.com/g/200/300"></img>
+    <div id="counter">Count <span id="count">0</span></div>
+  </body>
 </html>

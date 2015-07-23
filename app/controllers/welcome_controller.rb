@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 	def index
 		return head :ok unless request.referer.present?
 		url.increment
-		render :plain => "Thank you! Hits: #{url.hits}"
+		render :json => { :hits => url.hits }
 	end
 
 	private
