@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
 	def index
 		return head :ok unless request.referer.present?
-		Visit.create(:host => host, :path => path, :ip_address => ip_address, :session => session_id)
-		render :plain => 'Thank you!'
+		url.increment
+		render :plain => "Thank you! Hits: #{url.hits}"
 	end
 
 	private
@@ -16,12 +16,10 @@ class WelcomeController < ApplicationController
 		request.remote_ip
 	end
 
-	def host
-		URI(request.referer).host
-	end
-
-	def path
-		URI(request.referer).path
+	def url
+		return @url if @url
+		uri = URI(request.referer)
+		url = Url.find_or_create_by(:host => uri.host, :path => uri.path)
 	end
 
 	def cache_key

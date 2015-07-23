@@ -7,11 +7,12 @@ class Url < ActiveRecord::Base
   private :hit_count, :hit_count=
 
   def hits
-    hit_count
+    hit_count.count
   end
 
   def increment
-    hit_count.increment(:count)
+    hit_count.increment!(:count)
+    hits
   end
 
   private
