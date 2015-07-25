@@ -21,9 +21,4 @@ class WelcomeController < ApplicationController
 		uri = URI(request.referer)
 		url = Url.find_or_create_by(:host => uri.host, :path => uri.path)
 	end
-
-	def cache_key
-		"host-#{host}/path-#{path}"
-	end
-
 end
