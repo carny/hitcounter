@@ -39,6 +39,7 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'rspec-rails', '~> 3.0'
 
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debugger'
